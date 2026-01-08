@@ -95,14 +95,13 @@
             margin-bottom: 20px;
         }
 
-        .button-group {
+        .navigation {
             display: flex;
-            flex-direction: column;
             gap: 10px;
-            margin: 25px 0;
+            margin-top: 30px;
         }
 
-        button, .choice-btn {
+        button {
             padding: 15px 25px;
             border: 2px solid #667eea;
             background: white;
@@ -114,22 +113,11 @@
             font-weight: 500;
         }
 
-        button:hover, .choice-btn:hover {
+        button:hover {
             background: #667eea;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-        }
-
-        .choice-btn.selected {
-            background: #667eea;
-            color: white;
-        }
-
-        .navigation {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
         }
 
         .btn-primary {
@@ -240,16 +228,12 @@
             padding-left: 20px;
         }
 
-        .summary-box {
+        .highlight-box {
             background: #f8f9fa;
             border-left: 4px solid #667eea;
             padding: 15px;
             margin: 20px 0;
             border-radius: 4px;
-        }
-
-        .summary-box p {
-            margin-bottom: 8px;
         }
 
         @media (max-width: 600px) {
@@ -265,7 +249,7 @@
                 font-size: 20px;
             }
 
-            button, .choice-btn {
+            button {
                 padding: 12px 20px;
                 font-size: 15px;
             }
@@ -283,7 +267,7 @@
         <div class="step active" data-step="1">
             <h2>Welcome!</h2>
             <p>We help small rural towns win grant money for things like water systems, roads, fire trucks, clinics, and parks. This short tour shows how you might work with us as a contractor.</p>
-            <p>This will take about 5 minutes. Let's get started!</p>
+            <p>This will take about 5 minutes to walk through. Let's get started!</p>
             <div class="navigation">
                 <button class="btn-primary" onclick="nextStep()">Get Started</button>
             </div>
@@ -293,7 +277,7 @@
         <div class="step" data-step="2">
             <h2>What We Do</h2>
             <p>We act as the part-time grant office for small towns that don't have their own planner or grant writer. We find grants, plan projects, write applications, and sometimes help after they win.</p>
-            <p>Think of us as the grant department these communities can't afford to hire full-time.</p>
+            <p>Think of us as the grant department these communities can't afford to hire full-time. We bridge the gap between their needs and available funding opportunities.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
@@ -304,7 +288,7 @@
         <div class="step" data-step="3">
             <h2>Who We Serve</h2>
             <p>Most clients are tiny towns, rural water or fire districts, and small nonprofits in rural areas. They usually have very limited staff and time.</p>
-            <p>These communities often have big needs but small budgets. That's where grant funding makes a real difference.</p>
+            <p>These communities often have big needs but small budgets. That's where grant funding makes a real difference—replacing aging infrastructure, improving public safety, and expanding community services.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
@@ -316,104 +300,74 @@
             <h2>Types of Work You Might Do</h2>
             <p>As a contractor, you might help with:</p>
             <ul>
-                <li>Researching grant opportunities</li>
+                <li>Researching grant opportunities that match client needs</li>
                 <li>Writing or editing grant applications</li>
-                <li>Organizing details and deadlines</li>
+                <li>Organizing project details and tracking deadlines</li>
                 <li>Gathering information from clients</li>
                 <li>Helping with simple progress reports</li>
             </ul>
-            <p>Different projects need different skills, and we try to match tasks to people's strengths.</p>
+            <p>Different projects need different skills, and we try to match tasks to people's strengths. Grant experience is helpful but not required for some roles—we can provide training for the right person.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 5: Grant Experience Question -->
+        <!-- Step 5: Expectations -->
         <div class="step" data-step="5">
-            <h2>Your Grant Experience</h2>
-            <p>Have you worked on grants before?</p>
-            <div class="button-group">
-                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Yes, a lot')">Yes, a lot</button>
-                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Some experience')">Some experience</button>
-                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Not yet, but interested')">Not yet, but interested</button>
-            </div>
-            <div class="navigation">
-                <button class="btn-secondary" onclick="prevStep()">Back</button>
-                <button class="btn-primary" id="nextBtn5" onclick="nextStep()" disabled style="opacity: 0.5;">Next</button>
-            </div>
-        </div>
-
-        <!-- Step 6: Work Preferences -->
-        <div class="step" data-step="6">
-            <h2>What Kind of Work Interests You?</h2>
-            <p>Select what appeals most to you:</p>
-            <div class="button-group">
-                <button class="choice-btn" onclick="selectChoice('workPreference', 'Research and finding opportunities')">Research and finding opportunities</button>
-                <button class="choice-btn" onclick="selectChoice('workPreference', 'Writing and editing')">Writing and editing</button>
-                <button class="choice-btn" onclick="selectChoice('workPreference', 'Organization and project coordination')">Organization and project coordination</button>
-                <button class="choice-btn" onclick="selectChoice('workPreference', 'Client communication')">Client communication</button>
-            </div>
-            <div class="navigation">
-                <button class="btn-secondary" onclick="prevStep()">Back</button>
-                <button class="btn-primary" id="nextBtn6" onclick="nextStep()" disabled style="opacity: 0.5;">Next</button>
-            </div>
-        </div>
-
-        <!-- Step 7: Expectations -->
-        <div class="step" data-step="7">
             <h2>What to Expect</h2>
             <p>Working with us means:</p>
             <ul>
                 <li><strong>Mostly online work:</strong> You can work from anywhere with reliable internet</li>
                 <li><strong>Checklists and deadlines:</strong> We stay organized with clear tasks and due dates</li>
-                <li><strong>Early communication:</strong> If something is confusing, speak up right away</li>
+                <li><strong>Early communication:</strong> If something is confusing, speak up right away—we want to help</li>
                 <li><strong>Quality over speed:</strong> We value honesty and thorough work more than rushing</li>
             </ul>
+            <p>We understand that contractors balance multiple commitments. Clear communication about your availability helps everyone succeed.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 8: Availability -->
-        <div class="step" data-step="8">
+        <!-- Step 6: Availability -->
+        <div class="step" data-step="6">
             <h2>Availability & Requirements</h2>
-            <p><strong>Workload:</strong> Variable depending on grant cycles. Some weeks may be light, others may have urgent deadlines.</p>
-            <p><strong>Basic requirements:</strong></p>
-            <ul>
-                <li>Reliable internet connection</li>
-                <li>Basic computer skills</li>
-                <li>Ability to read and follow written instructions</li>
-            </ul>
-            <p>Grant experience is helpful but not required for some roles. We can provide training for the right person.</p>
+            <p><strong>Workload:</strong> Variable depending on grant cycles. Some weeks may be light, others may have urgent deadlines when applications are due. We try to give as much advance notice as possible.</p>
+            
+            <div class="highlight-box">
+                <p><strong>Basic requirements:</strong></p>
+                <ul>
+                    <li>Reliable internet connection</li>
+                    <li>Basic computer skills (email, word processing, spreadsheets)</li>
+                    <li>Ability to read and follow written instructions</li>
+                    <li>Comfortable working independently</li>
+                </ul>
+            </div>
+
+            <p>You'll be working as an independent contractor, not a full-time employee. This means flexible scheduling but also self-directed work.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 9: Values -->
-        <div class="step" data-step="9">
+        <!-- Step 7: Values -->
+        <div class="step" data-step="7">
             <h2>Our Values</h2>
             <p>We care about helping small communities that are often overlooked. We try to be patient, respectful, and practical with every client.</p>
-            <p>Rural communities face unique challenges. When we help them secure funding, we're helping improve real lives—better water quality, safer roads, equipped fire departments, and accessible healthcare.</p>
+            <p>Rural communities face unique challenges—limited resources, shrinking populations, aging infrastructure. When we help them secure funding, we're helping improve real lives: better water quality, safer roads, equipped fire departments, and accessible healthcare.</p>
+            <p>If that mission resonates with you, you might be a great fit for our team.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 10: Application Form -->
-        <div class="step" data-step="10">
+        <!-- Step 8: Application Form -->
+        <div class="step" data-step="8">
             <h2>Your Information</h2>
-            <p>Great! Let's collect some basic information about you.</p>
-            
-            <div class="summary-box">
-                <p><strong>Your Selections:</strong></p>
-                <p id="experienceSummary"></p>
-                <p id="preferenceSummary"></p>
-            </div>
+            <p>If you're interested in working with us, please share some basic information about yourself. We'll review it and reach out if there's a potential match.</p>
 
             <form id="applicationForm">
                 <div class="form-group">
@@ -437,7 +391,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Skills (check all that apply):</label>
+                    <label>Skills you have or are developing (check all that apply):</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="skillResearch" value="Research">
@@ -459,26 +413,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Briefly describe your experience with writing, research, or grants: <span class="required">*</span></label>
-                    <textarea id="experience" required placeholder="Tell us about your relevant experience..."></textarea>
+                    <label>Briefly describe your experience with writing, research, or grants (or related interests): <span class="required">*</span></label>
+                    <textarea id="experience" required placeholder="Share any relevant experience, education, or why this work interests you..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <div class="checkbox-item">
                         <input type="checkbox" id="contractorAgreement" required>
-                        <label for="contractorAgreement">I'm okay working as an independent contractor (not a full-time employee) <span class="required">*</span></label>
+                        <label for="contractorAgreement">I understand this is independent contractor work (not a full-time employee position) <span class="required">*</span></label>
                     </div>
                 </div>
 
                 <div class="navigation">
                     <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="submit" class="btn-primary">Submit Application</button>
+                    <button type="submit" class="btn-primary">Submit</button>
                 </div>
             </form>
         </div>
 
-        <!-- Step 11: Thank You -->
-        <div class="step" data-step="11">
+        <!-- Step 9: Thank You -->
+        <div class="step" data-step="9">
             <div class="success-message">
                 <div class="success-icon">✓</div>
                 <h2>Thank You!</h2>
@@ -490,10 +444,8 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 11;
+        const totalSteps = 9;
         const userData = {
-            grantExperience: '',
-            workPreference: '',
             name: '',
             email: '',
             phone: '',
@@ -516,11 +468,6 @@
             currentStep = stepNumber;
             updateProgress();
             window.scrollTo(0, 0);
-
-            // Update summary if on form step
-            if (stepNumber === 10) {
-                updateSummary();
-            }
         }
 
         function nextStep() {
@@ -533,31 +480,6 @@
             if (currentStep > 1) {
                 showStep(currentStep - 1);
             }
-        }
-
-        function selectChoice(key, value) {
-            userData[key] = value;
-            
-            // Update button styles
-            const currentStepDiv = document.querySelector(`[data-step="${currentStep}"]`);
-            currentStepDiv.querySelectorAll('.choice-btn').forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            event.target.classList.add('selected');
-
-            // Enable next button
-            const nextBtn = document.getElementById(`nextBtn${currentStep}`);
-            if (nextBtn) {
-                nextBtn.disabled = false;
-                nextBtn.style.opacity = '1';
-            }
-        }
-
-        function updateSummary() {
-            document.getElementById('experienceSummary').textContent = 
-                'Grant Experience: ' + userData.grantExperience;
-            document.getElementById('preferenceSummary').textContent = 
-                'Preferred Work: ' + userData.workPreference;
         }
 
         // Form submission
@@ -581,18 +503,16 @@
             });
 
             // Log complete application data
-            console.log('Application Submitted:', userData);
-            console.log('=== Complete Application Data ===');
+            console.log('=== Contractor Application Submitted ===');
             console.log('Name:', userData.name);
             console.log('Email:', userData.email);
             console.log('Phone:', userData.phone);
             console.log('Location:', userData.location);
-            console.log('Grant Experience:', userData.grantExperience);
-            console.log('Work Preference:', userData.workPreference);
-            console.log('Skills:', userData.skills.join(', '));
-            console.log('Experience Description:', userData.experience);
+            console.log('Skills:', userData.skills.join(', ') || 'None selected');
+            console.log('Experience:', userData.experience);
             console.log('Contractor Agreement:', userData.contractorAgreement);
-            console.log('================================');
+            console.log('Timestamp:', new Date().toISOString());
+            console.log('========================================');
 
             // Show thank you step
             nextStep();

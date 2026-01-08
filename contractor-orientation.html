@@ -25,7 +25,7 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
             padding: 40px;
             animation: fadeIn 0.5s ease-in;
@@ -89,10 +89,16 @@
             font-size: 22px;
         }
 
+        h3 {
+            color: #555;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
         p {
             color: #555;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .navigation {
@@ -142,66 +148,36 @@
             color: #333;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .checkbox-group {
+        ul {
+            color: #555;
+            line-height: 1.8;
             margin: 15px 0;
+            padding-left: 25px;
         }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+        ul li {
+            margin-bottom: 8px;
         }
 
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            cursor: pointer;
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
-        .checkbox-item label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: normal;
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #667eea;
         }
 
-        .required {
-            color: #e74c3c;
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
         .success-message {
@@ -218,22 +194,25 @@
         .success-icon {
             font-size: 64px;
             margin-bottom: 20px;
+            color: #27ae60;
         }
 
-        ul {
-            text-align: left;
-            color: #555;
-            line-height: 1.8;
+        .timeline {
             margin: 20px 0;
-            padding-left: 20px;
         }
 
-        .highlight-box {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
+        .timeline-item {
             padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .timeline-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
         }
 
         @media (max-width: 600px) {
@@ -265,195 +244,212 @@
 
         <!-- Step 1: Welcome -->
         <div class="step active" data-step="1">
-            <h2>Welcome!</h2>
-            <p>We help small rural towns win grant money for things like water systems, roads, fire trucks, clinics, and parks. This short tour shows how you might work with us as a contractor.</p>
-            <p>This will take about 5 minutes to walk through. Let's get started!</p>
+            <h2>Welcome to the Team!</h2>
+            <p>This interactive orientation will walk you through our business model, how we work, and our immediate plans. Take your time clicking through each section to understand what we do and how you fit in.</p>
+            <p>This should take about 5-7 minutes to complete.</p>
             <div class="navigation">
-                <button class="btn-primary" onclick="nextStep()">Get Started</button>
+                <button class="btn-primary" onclick="nextStep()">Let's Begin</button>
             </div>
         </div>
 
-        <!-- Step 2: What We Do -->
+        <!-- Step 2: The Problem We Solve -->
         <div class="step" data-step="2">
-            <h2>What We Do</h2>
-            <p>We act as the part-time grant office for small towns that don't have their own planner or grant writer. We find grants, plan projects, write applications, and sometimes help after they win.</p>
-            <p>Think of us as the grant department these communities can't afford to hire full-time. We bridge the gap between their needs and available funding opportunities.</p>
+            <h2>The Problem We Solve</h2>
+            <p>Small rural towns across the country need things like:</p>
+            <ul>
+                <li>New water systems and infrastructure</li>
+                <li>Road improvements and bridges</li>
+                <li>Fire trucks and emergency equipment</li>
+                <li>Community clinics and health services</li>
+                <li>Parks, playgrounds, and community centers</li>
+            </ul>
+            <p>But these tiny communities don't have the staff or expertise to find grants and write competitive applications. That's where we come in.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 3: Who We Serve -->
+        <!-- Step 3: Our Business Model -->
         <div class="step" data-step="3">
-            <h2>Who We Serve</h2>
-            <p>Most clients are tiny towns, rural water or fire districts, and small nonprofits in rural areas. They usually have very limited staff and time.</p>
-            <p>These communities often have big needs but small budgets. That's where grant funding makes a real difference—replacing aging infrastructure, improving public safety, and expanding community services.</p>
-            <div class="navigation">
-                <button class="btn-secondary" onclick="prevStep()">Back</button>
-                <button class="btn-primary" onclick="nextStep()">Next</button>
-            </div>
-        </div>
-
-        <!-- Step 4: Types of Work -->
-        <div class="step" data-step="4">
-            <h2>Types of Work You Might Do</h2>
-            <p>As a contractor, you might help with:</p>
-            <ul>
-                <li>Researching grant opportunities that match client needs</li>
-                <li>Writing or editing grant applications</li>
-                <li>Organizing project details and tracking deadlines</li>
-                <li>Gathering information from clients</li>
-                <li>Helping with simple progress reports</li>
-            </ul>
-            <p>Different projects need different skills, and we try to match tasks to people's strengths. Grant experience is helpful but not required for some roles—we can provide training for the right person.</p>
-            <div class="navigation">
-                <button class="btn-secondary" onclick="prevStep()">Back</button>
-                <button class="btn-primary" onclick="nextStep()">Next</button>
-            </div>
-        </div>
-
-        <!-- Step 5: Expectations -->
-        <div class="step" data-step="5">
-            <h2>What to Expect</h2>
-            <p>Working with us means:</p>
-            <ul>
-                <li><strong>Mostly online work:</strong> You can work from anywhere with reliable internet</li>
-                <li><strong>Checklists and deadlines:</strong> We stay organized with clear tasks and due dates</li>
-                <li><strong>Early communication:</strong> If something is confusing, speak up right away—we want to help</li>
-                <li><strong>Quality over speed:</strong> We value honesty and thorough work more than rushing</li>
-            </ul>
-            <p>We understand that contractors balance multiple commitments. Clear communication about your availability helps everyone succeed.</p>
-            <div class="navigation">
-                <button class="btn-secondary" onclick="prevStep()">Back</button>
-                <button class="btn-primary" onclick="nextStep()">Next</button>
-            </div>
-        </div>
-
-        <!-- Step 6: Availability -->
-        <div class="step" data-step="6">
-            <h2>Availability & Requirements</h2>
-            <p><strong>Workload:</strong> Variable depending on grant cycles. Some weeks may be light, others may have urgent deadlines when applications are due. We try to give as much advance notice as possible.</p>
+            <h2>Our Business Model</h2>
+            <p>We act as the outsourced grant office for communities that can't afford their own planner or grant writer.</p>
             
+            <h3>What We Do:</h3>
+            <ul>
+                <li><strong>Find opportunities:</strong> Research and identify grants that match client needs</li>
+                <li><strong>Plan projects:</strong> Help communities define and scope their projects properly</li>
+                <li><strong>Write applications:</strong> Prepare competitive grant applications</li>
+                <li><strong>Manage deadlines:</strong> Keep track of multiple applications and requirements</li>
+                <li><strong>Post-award support:</strong> Sometimes help with reporting after they win</li>
+            </ul>
+
+            <p>We're essentially a part-time grant department that serves multiple small clients who couldn't justify a full-time position.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Who Our Clients Are -->
+        <div class="step" data-step="4">
+            <h2>Who Our Clients Are</h2>
+            <p>Our typical clients include:</p>
+            <ul>
+                <li><strong>Tiny rural towns</strong> (populations under 5,000)</li>
+                <li><strong>Rural water districts</strong> serving small communities</li>
+                <li><strong>Volunteer fire departments</strong> in rural areas</li>
+                <li><strong>Small rural nonprofits</strong> with limited capacity</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Key characteristic:</strong> These clients have very limited staff, tight budgets, and almost no time. They need someone who can work independently and communicate clearly when they need input.</p>
+            </div>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Your Role as a Contractor -->
+        <div class="step" data-step="5">
+            <h2>Your Role as a Contractor</h2>
+            <p>As part of our contractor team, you might work on:</p>
+            <ul>
+                <li><strong>Grant research:</strong> Finding funding opportunities that match client needs</li>
+                <li><strong>Application writing:</strong> Drafting sections or complete grant proposals</li>
+                <li><strong>Editing and review:</strong> Polishing applications before submission</li>
+                <li><strong>Information gathering:</strong> Working with clients to collect needed details</li>
+                <li><strong>Organization:</strong> Tracking deadlines, requirements, and deliverables</li>
+                <li><strong>Progress reporting:</strong> Helping clients report on funded projects</li>
+            </ul>
+
+            <p>We match tasks to your strengths. Some people are natural researchers, others excel at writing, and some are organizational wizards. All roles are valuable.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 6: How We Work -->
+        <div class="step" data-step="6">
+            <h2>How We Work</h2>
+            
+            <h3>Work Style:</h3>
+            <ul>
+                <li><strong>Remote/online:</strong> Work from anywhere with reliable internet</li>
+                <li><strong>Checklist-driven:</strong> Clear tasks with specific deadlines</li>
+                <li><strong>Collaborative:</strong> Regular check-ins and communication</li>
+                <li><strong>Flexible:</strong> Workload varies with grant cycles</li>
+            </ul>
+
             <div class="highlight-box">
-                <p><strong>Basic requirements:</strong></p>
+                <h3>Our Expectations:</h3>
                 <ul>
-                    <li>Reliable internet connection</li>
-                    <li>Basic computer skills (email, word processing, spreadsheets)</li>
-                    <li>Ability to read and follow written instructions</li>
-                    <li>Comfortable working independently</li>
+                    <li>Communicate early if you're stuck or confused</li>
+                    <li>Meet deadlines (grant deadlines are non-negotiable)</li>
+                    <li>Prioritize quality and accuracy over speed</li>
+                    <li>Be honest about your capacity and availability</li>
                 </ul>
             </div>
 
-            <p>You'll be working as an independent contractor, not a full-time employee. This means flexible scheduling but also self-directed work.</p>
+            <p>We value contractors who ask questions, flag potential issues early, and take pride in their work.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 7: Values -->
+        <!-- Step 7: Immediate Plans (Next 3-6 Months) -->
         <div class="step" data-step="7">
-            <h2>Our Values</h2>
-            <p>We care about helping small communities that are often overlooked. We try to be patient, respectful, and practical with every client.</p>
-            <p>Rural communities face unique challenges—limited resources, shrinking populations, aging infrastructure. When we help them secure funding, we're helping improve real lives: better water quality, safer roads, equipped fire departments, and accessible healthcare.</p>
-            <p>If that mission resonates with you, you might be a great fit for our team.</p>
+            <h2>Immediate Plans (Next 3-6 Months)</h2>
+            <p>Here's what we're working on right now and in the near term:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Current Focus:</strong>
+                    Building our client base with 3-5 rural communities who need ongoing grant support.
+                </div>
+                <div class="timeline-item">
+                    <strong>January-February 2026:</strong>
+                    Active grant writing season for spring/summer funding cycles. Multiple applications in progress.
+                </div>
+                <div class="timeline-item">
+                    <strong>February-March 2026:</strong>
+                    Developing templates and systems to work more efficiently as we scale.
+                </div>
+                <div class="timeline-item">
+                    <strong>Spring 2026:</strong>
+                    Expanding contractor team as workload grows with new clients.
+                </div>
+            </div>
+
+            <p>Right now we're in a growth phase - building relationships with communities, writing active grants, and refining our processes.</p>
             <div class="navigation">
                 <button class="btn-secondary" onclick="prevStep()">Back</button>
                 <button class="btn-primary" onclick="nextStep()">Next</button>
             </div>
         </div>
 
-        <!-- Step 8: Application Form -->
+        <!-- Step 8: Training and Support -->
         <div class="step" data-step="8">
-            <h2>Your Information</h2>
-            <p>If you're interested in working with us, please share some basic information about yourself. We'll review it and reach out if there's a potential match.</p>
+            <h2>Training and Support</h2>
+            <p>We understand that grant writing is specialized work. Here's how we support you:</p>
 
-            <form id="applicationForm">
-                <div class="form-group">
-                    <label>Name <span class="required">*</span></label>
-                    <input type="text" id="name" required>
-                </div>
+            <ul>
+                <li><strong>Initial orientation:</strong> Overview of our processes and expectations</li>
+                <li><strong>Grant-specific training:</strong> Background on each funding program you work with</li>
+                <li><strong>Templates and examples:</strong> Access to successful past applications</li>
+                <li><strong>Regular feedback:</strong> Constructive review of your work</li>
+                <li><strong>Available for questions:</strong> Quick response when you need clarification</li>
+            </ul>
 
-                <div class="form-group">
-                    <label>Email <span class="required">*</span></label>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Phone <span class="required">*</span></label>
-                    <input type="tel" id="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label>City and State <span class="required">*</span></label>
-                    <input type="text" id="location" placeholder="e.g., Jackson, MS" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Skills you have or are developing (check all that apply):</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="skillResearch" value="Research">
-                            <label for="skillResearch">Research</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="skillWriting" value="Writing">
-                            <label for="skillWriting">Writing</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="skillOrganizing" value="Organizing">
-                            <label for="skillOrganizing">Organizing</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="skillCommunication" value="Client Communication">
-                            <label for="skillCommunication">Client Communication</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Briefly describe your experience with writing, research, or grants (or related interests): <span class="required">*</span></label>
-                    <textarea id="experience" required placeholder="Share any relevant experience, education, or why this work interests you..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="contractorAgreement" required>
-                        <label for="contractorAgreement">I understand this is independent contractor work (not a full-time employee position) <span class="required">*</span></label>
-                    </div>
-                </div>
-
-                <div class="navigation">
-                    <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="submit" class="btn-primary">Submit</button>
-                </div>
-            </form>
+            <div class="info-box">
+                <p><strong>Grant experience is helpful but not always required.</strong> If you're a strong writer who can follow detailed instructions and research effectively, we can teach you the grant-specific aspects. The right attitude and work ethic matter more than prior experience for many tasks.</p>
+            </div>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
         </div>
 
-        <!-- Step 9: Thank You -->
+        <!-- Step 9: Why This Work Matters -->
         <div class="step" data-step="9">
+            <h2>Why This Work Matters</h2>
+            <p>This isn't just paperwork - it's helping communities that are often overlooked and underserved.</p>
+
+            <p>When we help a town of 800 people win a $500,000 water system grant, we're helping families get safe drinking water. When we secure a $100,000 fire truck grant for a rural department, we're improving emergency response times that could save lives.</p>
+
+            <p>These small communities face unique challenges:</p>
+            <ul>
+                <li>Shrinking tax bases as young people move to cities</li>
+                <li>Aging infrastructure that needs replacement</li>
+                <li>Limited staff who wear many hats</li>
+                <li>Difficulty competing for grants against larger municipalities</li>
+            </ul>
+
+            <p>We level the playing field by bringing professional grant expertise to communities that need it most.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Finish</button>
+            </div>
+        </div>
+
+        <!-- Step 10: Orientation Complete -->
+        <div class="step" data-step="10">
             <div class="success-message">
                 <div class="success-icon">✓</div>
-                <h2>Thank You!</h2>
-                <p>We'll review your information and reach out if there's a good match. You'll get an email about next steps if we move forward.</p>
-                <p>We appreciate your interest in helping rural communities!</p>
+                <h2>Orientation Complete!</h2>
+                <p>You now have a solid understanding of our business model, who we serve, how we work, and our immediate plans.</p>
+                <p>As you start working with us, you'll learn more about specific grant programs, our client relationships, and our internal processes.</p>
+                <p><strong>Welcome to the team!</strong> We're glad to have you helping rural communities build better futures.</p>
             </div>
         </div>
     </div>
 
     <script>
         let currentStep = 1;
-        const totalSteps = 9;
-        const userData = {
-            name: '',
-            email: '',
-            phone: '',
-            location: '',
-            skills: [],
-            experience: '',
-            contractorAgreement: false
-        };
+        const totalSteps = 10;
 
         function updateProgress() {
             const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
@@ -481,42 +477,6 @@
                 showStep(currentStep - 1);
             }
         }
-
-        // Form submission
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Collect form data
-            userData.name = document.getElementById('name').value;
-            userData.email = document.getElementById('email').value;
-            userData.phone = document.getElementById('phone').value;
-            userData.location = document.getElementById('location').value;
-            userData.experience = document.getElementById('experience').value;
-            userData.contractorAgreement = document.getElementById('contractorAgreement').checked;
-
-            // Collect skills
-            userData.skills = [];
-            document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(cb => {
-                if (cb.id !== 'contractorAgreement') {
-                    userData.skills.push(cb.value);
-                }
-            });
-
-            // Log complete application data
-            console.log('=== Contractor Application Submitted ===');
-            console.log('Name:', userData.name);
-            console.log('Email:', userData.email);
-            console.log('Phone:', userData.phone);
-            console.log('Location:', userData.location);
-            console.log('Skills:', userData.skills.join(', ') || 'None selected');
-            console.log('Experience:', userData.experience);
-            console.log('Contractor Agreement:', userData.contractorAgreement);
-            console.log('Timestamp:', new Date().toISOString());
-            console.log('========================================');
-
-            // Show thank you step
-            nextStep();
-        });
 
         // Initialize
         updateProgress();

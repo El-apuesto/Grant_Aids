@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contractor Orientation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin: 20px 0 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .step {
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        button, .choice-btn {
+            padding: 15px 25px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        button:hover, .choice-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .choice-btn.selected {
+            background: #667eea;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+            border-color: #ccc;
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message h2 {
+            color: #27ae60;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            text-align: left;
+            color: #555;
+            line-height: 1.8;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .summary-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .summary-box p {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            button, .choice-btn {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contractor Orientation</h1>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Step 1: Welcome -->
+        <div class="step active" data-step="1">
+            <h2>Welcome!</h2>
+            <p>We help small rural towns win grant money for things like water systems, roads, fire trucks, clinics, and parks. This short tour shows how you might work with us as a contractor.</p>
+            <p>This will take about 5 minutes. Let's get started!</p>
+            <div class="navigation">
+                <button class="btn-primary" onclick="nextStep()">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Step 2: What We Do -->
+        <div class="step" data-step="2">
+            <h2>What We Do</h2>
+            <p>We act as the part-time grant office for small towns that don't have their own planner or grant writer. We find grants, plan projects, write applications, and sometimes help after they win.</p>
+            <p>Think of us as the grant department these communities can't afford to hire full-time.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Who We Serve -->
+        <div class="step" data-step="3">
+            <h2>Who We Serve</h2>
+            <p>Most clients are tiny towns, rural water or fire districts, and small nonprofits in rural areas. They usually have very limited staff and time.</p>
+            <p>These communities often have big needs but small budgets. That's where grant funding makes a real difference.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Types of Work -->
+        <div class="step" data-step="4">
+            <h2>Types of Work You Might Do</h2>
+            <p>As a contractor, you might help with:</p>
+            <ul>
+                <li>Researching grant opportunities</li>
+                <li>Writing or editing grant applications</li>
+                <li>Organizing details and deadlines</li>
+                <li>Gathering information from clients</li>
+                <li>Helping with simple progress reports</li>
+            </ul>
+            <p>Different projects need different skills, and we try to match tasks to people's strengths.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Grant Experience Question -->
+        <div class="step" data-step="5">
+            <h2>Your Grant Experience</h2>
+            <p>Have you worked on grants before?</p>
+            <div class="button-group">
+                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Yes, a lot')">Yes, a lot</button>
+                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Some experience')">Some experience</button>
+                <button class="choice-btn" onclick="selectChoice('grantExperience', 'Not yet, but interested')">Not yet, but interested</button>
+            </div>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" id="nextBtn5" onclick="nextStep()" disabled style="opacity: 0.5;">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 6: Work Preferences -->
+        <div class="step" data-step="6">
+            <h2>What Kind of Work Interests You?</h2>
+            <p>Select what appeals most to you:</p>
+            <div class="button-group">
+                <button class="choice-btn" onclick="selectChoice('workPreference', 'Research and finding opportunities')">Research and finding opportunities</button>
+                <button class="choice-btn" onclick="selectChoice('workPreference', 'Writing and editing')">Writing and editing</button>
+                <button class="choice-btn" onclick="selectChoice('workPreference', 'Organization and project coordination')">Organization and project coordination</button>
+                <button class="choice-btn" onclick="selectChoice('workPreference', 'Client communication')">Client communication</button>
+            </div>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" id="nextBtn6" onclick="nextStep()" disabled style="opacity: 0.5;">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 7: Expectations -->
+        <div class="step" data-step="7">
+            <h2>What to Expect</h2>
+            <p>Working with us means:</p>
+            <ul>
+                <li><strong>Mostly online work:</strong> You can work from anywhere with reliable internet</li>
+                <li><strong>Checklists and deadlines:</strong> We stay organized with clear tasks and due dates</li>
+                <li><strong>Early communication:</strong> If something is confusing, speak up right away</li>
+                <li><strong>Quality over speed:</strong> We value honesty and thorough work more than rushing</li>
+            </ul>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 8: Availability -->
+        <div class="step" data-step="8">
+            <h2>Availability & Requirements</h2>
+            <p><strong>Workload:</strong> Variable depending on grant cycles. Some weeks may be light, others may have urgent deadlines.</p>
+            <p><strong>Basic requirements:</strong></p>
+            <ul>
+                <li>Reliable internet connection</li>
+                <li>Basic computer skills</li>
+                <li>Ability to read and follow written instructions</li>
+            </ul>
+            <p>Grant experience is helpful but not required for some roles. We can provide training for the right person.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 9: Values -->
+        <div class="step" data-step="9">
+            <h2>Our Values</h2>
+            <p>We care about helping small communities that are often overlooked. We try to be patient, respectful, and practical with every client.</p>
+            <p>Rural communities face unique challenges. When we help them secure funding, we're helping improve real lives—better water quality, safer roads, equipped fire departments, and accessible healthcare.</p>
+            <div class="navigation">
+                <button class="btn-secondary" onclick="prevStep()">Back</button>
+                <button class="btn-primary" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 10: Application Form -->
+        <div class="step" data-step="10">
+            <h2>Your Information</h2>
+            <p>Great! Let's collect some basic information about you.</p>
+            
+            <div class="summary-box">
+                <p><strong>Your Selections:</strong></p>
+                <p id="experienceSummary"></p>
+                <p id="preferenceSummary"></p>
+            </div>
+
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label>Name <span class="required">*</span></label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone <span class="required">*</span></label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>City and State <span class="required">*</span></label>
+                    <input type="text" id="location" placeholder="e.g., Jackson, MS" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Skills (check all that apply):</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="skillResearch" value="Research">
+                            <label for="skillResearch">Research</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="skillWriting" value="Writing">
+                            <label for="skillWriting">Writing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="skillOrganizing" value="Organizing">
+                            <label for="skillOrganizing">Organizing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="skillCommunication" value="Client Communication">
+                            <label for="skillCommunication">Client Communication</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Briefly describe your experience with writing, research, or grants: <span class="required">*</span></label>
+                    <textarea id="experience" required placeholder="Tell us about your relevant experience..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="contractorAgreement" required>
+                        <label for="contractorAgreement">I'm okay working as an independent contractor (not a full-time employee) <span class="required">*</span></label>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 11: Thank You -->
+        <div class="step" data-step="11">
+            <div class="success-message">
+                <div class="success-icon">✓</div>
+                <h2>Thank You!</h2>
+                <p>We'll review your information and reach out if there's a good match. You'll get an email about next steps if we move forward.</p>
+                <p>We appreciate your interest in helping rural communities!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 11;
+        const userData = {
+            grantExperience: '',
+            workPreference: '',
+            name: '',
+            email: '',
+            phone: '',
+            location: '',
+            skills: [],
+            experience: '',
+            contractorAgreement: false
+        };
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+            currentStep = stepNumber;
+            updateProgress();
+            window.scrollTo(0, 0);
+
+            // Update summary if on form step
+            if (stepNumber === 10) {
+                updateSummary();
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        }
+
+        function selectChoice(key, value) {
+            userData[key] = value;
+            
+            // Update button styles
+            const currentStepDiv = document.querySelector(`[data-step="${currentStep}"]`);
+            currentStepDiv.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            // Enable next button
+            const nextBtn = document.getElementById(`nextBtn${currentStep}`);
+            if (nextBtn) {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+            }
+        }
+
+        function updateSummary() {
+            document.getElementById('experienceSummary').textContent = 
+                'Grant Experience: ' + userData.grantExperience;
+            document.getElementById('preferenceSummary').textContent = 
+                'Preferred Work: ' + userData.workPreference;
+        }
+
+        // Form submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            userData.name = document.getElementById('name').value;
+            userData.email = document.getElementById('email').value;
+            userData.phone = document.getElementById('phone').value;
+            userData.location = document.getElementById('location').value;
+            userData.experience = document.getElementById('experience').value;
+            userData.contractorAgreement = document.getElementById('contractorAgreement').checked;
+
+            // Collect skills
+            userData.skills = [];
+            document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(cb => {
+                if (cb.id !== 'contractorAgreement') {
+                    userData.skills.push(cb.value);
+                }
+            });
+
+            // Log complete application data
+            console.log('Application Submitted:', userData);
+            console.log('=== Complete Application Data ===');
+            console.log('Name:', userData.name);
+            console.log('Email:', userData.email);
+            console.log('Phone:', userData.phone);
+            console.log('Location:', userData.location);
+            console.log('Grant Experience:', userData.grantExperience);
+            console.log('Work Preference:', userData.workPreference);
+            console.log('Skills:', userData.skills.join(', '));
+            console.log('Experience Description:', userData.experience);
+            console.log('Contractor Agreement:', userData.contractorAgreement);
+            console.log('================================');
+
+            // Show thank you step
+            nextStep();
+        });
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
